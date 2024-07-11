@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    double a, b, c, d, x, y;
+    double Z;
+
+    cout << "Enter a value: ";
+    cin >> a;
+    cout << "Enter b value: ";
+    cin >> b;
+    cout << "Enter c value: ";
+    cin >> c;
+    cout << "Enter d value: ";
+    cin >> d;
+    cout << "Enter x value: ";
+    cin >> x;
+    cout << "Enter y value: ";
+    cin >> y;
+
+    /* Evaluate the expression for finding Z value */
+    Z = a * x + (b - c) * (c - d) / y;
+
+    cout << "Z = " << Z << endl;
+	
+Enter a value: 434.44
+Enter b value: 500
+Enter c value: 300
+Enter d value: 400
+Enter x value: 200
+Enter y value: 2
+Z = 76888
