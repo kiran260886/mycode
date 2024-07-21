@@ -1,0 +1,26 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int n=5;
+   
+    // Outer loop to iterate through each row
+    for (int i = 1; i <= n; ++i) {
+        // Check if the row number is odd or even
+        if (i % 2 == 1) {
+            // Print stars for odd rows
+            for (int j = 1; j <= i; ++j) {
+                cout << "* ";
+            }
+        } else {
+            // Print tildes for even rows
+            for (int j = 1; j <= i; ++j) {
+                cout << "~ ";
+            }
+        }
+        cout << endl; // Move to the next line after printing stars or tildes
+    }
+
+    return 0;
+}

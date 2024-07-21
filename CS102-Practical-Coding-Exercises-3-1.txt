@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+int main() {
+int n;
+//Prompt the user to input a value
+cout << "Enter a value: ";
+cin >> n;
+//Print the patteren loop
+for (int k=1; k <=n; ++k) {
+    //Print K stars in the current now
+    for(int p=1; p<=k; ++p){
+        cout<<"*";
+    }
+cout <<endl;// // Move to the next line after each row
+}
+return 0;
+}

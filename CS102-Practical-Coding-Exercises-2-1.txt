@@ -1,0 +1,50 @@
+#include <iostream>
+#include <vector>
+#include <algorithm> // for sort() function
+using namespace std;
+
+int main() {
+    int size;
+    cout << "Enter your list size: ";
+    cin >> size;
+
+    vector<int> list(size);
+
+    // Input values into the array
+    for (int i = 0; i < size; ++i) {
+        cout << "Enter list[" << i << "] value: ";
+        cin >> list[i];
+    }
+
+    // Sort the list in descending order
+    sort(list.begin(), list.end(), greater<int>());
+
+    // Display the given list
+    cout << "Given list: ";
+    for (int i = 0; i < size; ++i) {
+        cout << list[i];
+        if (i != size - 1) {
+            cout << ",";
+        } else {
+            cout << endl;
+        }
+    }
+
+    // Find and display the middle value
+    int middleIndex = size / 2;
+    int middleValue = list[middleIndex];
+    cout << "Sorted list: ";
+    for (int i = 0; i < size; ++i) {
+        cout << list[i];
+        if (i != size - 1) {
+            cout << ",";
+        } else {
+            cout << endl;
+        }
+    }
+
+    // Display the middle value
+    cout << "Middle value: " << middleValue << endl;
+
+    return 0;
+}

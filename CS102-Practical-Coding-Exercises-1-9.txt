@@ -1,0 +1,36 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+int main() {
+    long long value;  // Use long long to handle large numbers
+    std::cout << "Enter a value: ";
+    std::cin >> value;
+
+    std::vector<std::string> placeNames;
+    std::vector<int> placeValues;
+
+    // Fill placeNames and placeValues based on the number of digits
+    placeNames = {"One", "Ten", "Hundred", "Thousand", "Ten Thousand", "Hundred Thousand", "Million", "Ten Million", "Hundred Million", "Billion"
+};
+    
+    // Extract digits and place values
+    std::string result;
+    int position = 0;
+
+    while (value > 0) {
+        int digit = value % 10;  // Get the last digit
+        if (digit > 0) {
+            if (!result.empty()) {
+                result = "," + result;
+            }
+            result = std::to_string(digit) + " " + placeNames[position] + result;
+        }
+        value /= 10;  // Remove the last digit
+        position++;
+    }
+
+    std::cout << result << std::endl;
+
+    return 0;
+}

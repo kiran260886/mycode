@@ -1,0 +1,24 @@
+#include <iostream>
+#include <algorithm> // for std::min
+
+using namespace std;
+
+int main() {
+    int A, B, C;
+
+    //  user Input to enter values for A, B, and C
+    cout << "Enter A value: ";
+    cin >> A;
+    cout << "Enter B value: ";
+    cin >> B;
+    cout << "Enter C value: ";
+    cin >> C;
+
+    // Using std::min function to find the minimum
+    int min_value = std::min({A, B, C});
+
+    // Output the smallest value
+    cout << "The smallest number is: " << min_value << endl;
+
+    return 0;
+}

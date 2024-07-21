@@ -1,0 +1,62 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    const int SIZE = 6; // Size of the array
+    int arr[SIZE];
+    
+    // Input values into the array
+    for (int i = 0; i < SIZE; ++i) {
+        cout << "Enter a[" << i << "] value: ";
+        cin >> arr[i];
+    }
+
+    // Display the given list
+    cout << "Given list: ";
+    for (int i = 0; i < SIZE; ++i) {
+        cout << arr[i];
+        if (i != SIZE - 1) {
+            cout << ",";
+        }
+        else {
+            cout << "." << endl;
+        }
+    }
+
+    // Input value to search for
+    int searchValue;
+    cout << "Enter your search value: ";
+    cin >> searchValue;
+
+    // Search for the value in the array and find its position
+    int foundIndex = -1; // Variable to store the index where searchValue is found
+    for (int i = 0; i < SIZE; ++i) {
+        if (arr[i] == searchValue) {
+            foundIndex = i;
+            break;
+        }
+    }
+
+    // Output the search result with ordinal indicators
+    if (foundIndex != -1) {
+        cout << searchValue << " is found in ";
+        switch (foundIndex) {
+            case 0:
+                cout << "1st place in the list." << endl;
+                break;
+            case 1:
+                cout << "2nd place in the list." << endl;
+                break;
+            case 2:
+                cout << "3rd place in the list." << endl;
+                break;
+            default:
+                cout << foundIndex + 1 << "th place in the list." << endl;
+                break;
+        }
+    } else {
+        cout << searchValue << " is not found in the list." << endl;
+    }
+
+    return 0;
+}

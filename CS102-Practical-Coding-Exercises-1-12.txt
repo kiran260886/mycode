@@ -1,0 +1,48 @@
+#include <iostream>
+#include <string>
+#include <cctype> // For isalpha() and ispunct() functions
+
+using namespace std;
+
+bool isVowel(char c) {
+    c = tolower(c); // Convert to lowercase to handle both uppercase and lowercase vowels
+    return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u');
+}
+
+int main() {
+    string sentence;
+    cout << "Enter your sentence here: ";
+    getline(cin, sentence);
+
+    // Initialize counters
+    int specialChars = 0;
+    int words = 0;
+    int vowels = 0;
+
+    // Count special characters, words, and vowels
+    bool inWord = false; // Flag to check if currently inside a word
+    for (char c : sentence) {
+        if (isalpha(c)) {
+            if (!inWord) {
+                words++;
+                inWord = true;
+            }
+            if (isVowel(c)) {
+                vowels++;
+            }
+        } else if (ispunct(c)) {
+            specialChars++;
+            inWord = false;
+        } else if (isspace(c)) {
+            inWord = false;
+        }
+    }
+
+    // Output the results
+    cout << "Given sentence: \"" << sentence << "\"" << endl;
+    cout << "Special characters: " << specialChars << endl;
+    cout << "Words: " << words << endl;
+    cout << "Vowels: " << vowels << endl;
+
+    return 0;
+}

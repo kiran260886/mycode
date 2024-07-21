@@ -1,0 +1,42 @@
+#include <iostream>
+#include <algorithm> // For sort() function
+using namespace std;
+
+int main() {
+    const int SIZE = 5;
+    double doubleList[SIZE];
+    double originalList[SIZE];
+
+    // Input 5 different double values
+    cout << "Enter 5 different double values:" << endl;
+    for (int i = 0; i < SIZE; ++i) {
+        cout << "Value " << i + 1 << ": ";
+        cin >> doubleList[i];
+        originalList[i] = doubleList[i]; 
+    }
+
+    // Sort the array elements
+    sort(doubleList, doubleList + SIZE);
+
+    // Display the original list
+    cout << "Given list: ";
+    for (int i = 0; i < SIZE; ++i) {
+        cout << originalList[i]; 
+        if (i != SIZE - 1) {
+            cout << ", ";
+        }
+    }
+    cout << endl;
+
+    // Display the sorted list
+    cout << "Sorted list: ";
+    for (int i = 0; i < SIZE; ++i) {
+        cout << doubleList[i];
+        if (i != SIZE - 1) {
+            cout << ", ";
+        }
+    }
+    cout << endl;
+
+    return 0;
+}

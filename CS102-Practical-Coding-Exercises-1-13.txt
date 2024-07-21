@@ -1,0 +1,61 @@
+#include <iostream>
+#include <cstdlib>  // For rand() and srand()
+#include <ctime>    // For time()
+
+using namespace std;
+
+int main() {
+    int rangeMin, rangeMax;
+
+    // Input range from user
+    cout << "Enter the minimum value of range: ";
+    cin >> rangeMin;
+    cout << "Enter the maximum value of range: ";
+    cin >> rangeMax;
+
+    // Validate range (assuming rangeMin < rangeMax)
+    if (rangeMin >= rangeMax) {
+        cout << "Invalid range. Please enter a valid range where minimum is less than maximum." << endl;
+        return 1;
+    }
+
+    // Seed the random number generator
+    srand(static_cast<unsigned int>(time(nullptr)));
+
+    // Generate 10 random numbers within the specified range and count repeats
+    int randomNumbers[10];
+    int repeatCount[10] = {0}; // Array to count repeats, initialized to zero
+
+    // Generate random numbers and count repeats
+    for (int i = 0; i < 10; ++i) {
+        randomNumbers[i] = rand() % (rangeMax - rangeMin + 1) + rangeMin;
+
+        // Check for repeats
+        for (int j = 0; j < i; ++j) {
+            if (randomNumbers[j] == randomNumbers[i]) {
+                repeatCount[i]++;
+            }
+        }
+    }
+
+    // Display the generated list
+    cout << "List: ";
+    for (int i = 0; i < 10; ++i) {
+        if (i != 0) {
+            cout << ",";
+        }
+        cout << randomNumbers[i];
+    }
+    cout << endl;
+
+    // Display repeated numbers
+    cout << "Repeat:";
+    for (int i = 0; i < 10; ++i) {
+        if (repeatCount[i] > 0) {
+            cout << " " << randomNumbers[i] << " repeats " << repeatCount[i] + 1 << " times";
+        }
+    }
+    cout << endl;
+
+    return 0;
+}

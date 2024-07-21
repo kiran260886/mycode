@@ -1,0 +1,57 @@
+#include <iostream>
+using namespace std;
+
+void generatePattern1(int N) {
+    int sum1 = 0;
+    cout << "Pattern 1: ";
+    for (int i = 1; i <= N; ++i) {
+        sum1 += i * (i + 1) / 2;
+        if (i != 1) {
+            cout << " + ";
+        }
+        cout << i * (i + 1) / 2;
+    }
+    cout << " = " << sum1 << endl;
+}
+
+void generatePattern2(int N) {
+    double sum2 = 0.0;
+    cout << "Pattern 2: ";
+    for (int i = 1; i <= N; ++i) {
+        if (i != 1) {
+            cout << " + ";
+        }
+        cout << i << "/" << i + 1;
+        sum2 += static_cast<double>(i) / (i + 1);
+    }
+    cout << " = " << sum2 << endl;
+}
+
+void generatePattern3(int N) {
+    double sum3 = 1.0;
+    cout << "Pattern 3: ";
+    cout << "1";
+    for (int i = 2; i <= N; ++i) {
+        if (i % 2 == 0) {
+            cout << " + ";
+            sum3 += 1.0 / i;
+        } else {
+            cout << " - ";
+            sum3 -= 1.0 / i;
+        }
+        cout << "1/" << i;
+    }
+    cout << " = " << sum3 << endl;
+}
+
+int main() {
+    int N;
+    cout << "Enter the value of N: ";
+    cin >> N;
+
+    generatePattern1(N);
+    generatePattern2(N);
+    generatePattern3(N);
+
+    return 0;
+}

@@ -1,0 +1,23 @@
+#include <iostream>
+
+int main() {
+    int odds = 0;
+
+    std::cout << "Odd list between 20 to 47: ";
+
+    // Loop through numbers from 21 to 47
+    for (int i = 21; i <= 47; i += 2) {
+        std::cout << i;
+        odds++;
+
+        // Print a comma for numbers 
+        if (i < 47) {
+            std::cout << ", ";
+        }
+    }
+    
+    std::cout << std::endl; // New line after the list
+    std::cout << "Number of Odds between 20 to 47: " << odds << std::endl;
+
+    return 0;
+}

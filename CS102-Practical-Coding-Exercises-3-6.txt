@@ -1,0 +1,54 @@
+#include <iostream>
+#include <cstdlib>   // For rand() and srand()
+#include <ctime>     // For time()
+#include <vector>    // For vector
+#include <algorithm> // For shuffle
+
+using namespace std;
+
+int main() {
+    // Seed the random number generator
+    srand(time(0));
+
+    // Generate 6 unique random numbers between 10 to 20
+    vector<int> numbers;
+    for (int i = 10; i <= 20; ++i) {
+        numbers.push_back(i);
+    }
+
+    // Shuffle the vector to get random order of numbers
+    random_shuffle(numbers.begin(), numbers.end());
+
+    // Pick the first 6 numbers after shuffling
+    vector<int> randomNumbers(numbers.begin(), numbers.begin() + 6);
+
+    // generate the random numbers
+    cout << "Generated random numbers between 10 and 20: ";
+    for (int num : randomNumbers) {
+            }
+    cout << endl;
+
+    // Allow the user to find their lucky number in two tries
+    int luckyNumber;
+    bool found = false;
+
+    for (int tries = 0; tries < 2; ++tries) {
+        cout << "Enter your lucky number (between 10 and 20): ";
+        cin >> luckyNumber;
+
+        // Check if the lucky number is among the generated random numbers
+        if (find(randomNumbers.begin(), randomNumbers.end(), luckyNumber) != randomNumbers.end()) {
+            cout << "Congratulations! " << luckyNumber << " is your lucky number!" << endl;
+            found = true;
+            break;
+        } else {
+            cout << "Try again!" << endl;
+        }
+    }
+
+    if (!found) {
+        cout << "Sorry, you didn't find your lucky number. Better luck next time!" << endl;
+    }
+
+    return 0;
+}

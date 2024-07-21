@@ -1,0 +1,25 @@
+#include <iostream>
+
+int main() {
+    int n;
+    std::cout << "Enter a value: ";
+    std::cin >> n;
+
+    int numerator = 1, denominator = 1;
+
+    for (int i = 0; i < n; i++) {
+        if (i > 0) std::cout << (i % 2 == 0 ? " + " : " - ");
+        
+        if (i == 0) {
+            std::cout << numerator; // First term
+        } else {
+            std::cout << numerator << "/" << denominator; // Subsequent terms
+        }
+
+        numerator *= 2;   // Update numerator
+        denominator *= 2; // Update denominator
+    }
+
+    std::cout << std::endl; // New line after the pattern
+    return 0;
+}

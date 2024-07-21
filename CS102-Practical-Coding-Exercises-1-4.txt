@@ -1,0 +1,37 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int start, end;
+
+    // User input to enter start and final numbers
+    cout << "Even Number Generation" << endl;
+    cout << "################################" << endl;
+    cout << "Enter start number: ";
+    cin >> start;
+    cout << "Enter final number: ";
+    cin >> end;
+
+    // Condition start should be greater than end number
+    if (start > end) {
+        cout << "Please provide valid inputs. Starting number should be less than or equal to final number." << endl;
+        return 0;
+    }
+
+    // Generate even numbers between start and end
+    cout << "Even list between " << start << " and " << end << ": ";
+    bool first = true; 
+    for (int i = start; i <= end; ++i) {
+        if (i % 2 == 0) {
+            if (!first) {
+                cout << ", ";
+            }
+            cout << i;
+            first = false;
+        }
+    }
+    cout << endl;
+
+    return 0;
+}

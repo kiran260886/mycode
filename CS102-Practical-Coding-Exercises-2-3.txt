@@ -1,0 +1,126 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Class for student personal details
+class StudentPersonal {
+private:
+    int rollNo;
+    string fullName;  // Changed from private to protected to allow access by derived class
+    string course;
+    string college;
+
+public:
+    // Constructor to initialize student personal details
+    StudentPersonal(int rollNo, const string& fullName, const string& course, const string& college)
+        : rollNo(rollNo), fullName(fullName), course(course), college(college) {}
+
+    // Method to display personal details
+    void displayPersonalDetails() const {
+        cout << "Name: " << fullName << endl;
+        cout << "Roll No: " << rollNo << endl;
+        cout << "Course: " << course << endl;
+        cout << "College: " << college << endl;
+    }
+
+    // Getter for fullName
+    const string& getFullName() const {
+        return fullName;
+    }
+};
+
+// Class for grade calculation
+class GradeCalculation : public StudentPersonal {
+private:
+    struct Paper {
+        string paperName;
+        int score;
+        string grade;
+    };
+
+    const int PASS_MARK = 40; // Minimum score to pass
+    Paper papers[3];
+
+public:
+    // Constructor to initialize grade calculation with personal details
+    GradeCalculation(int rollNo, const string& fullName, const string& course, const string& college,
+                     const string& paper1, int score1, const string& paper2, int score2, const string& paper3, int score3)
+        : StudentPersonal(rollNo, fullName, course, college) {
+        
+        papers[0].paperName = paper1;
+        papers[0].score = score1;
+        papers[0].grade = (score1 >= PASS_MARK) ? "Pass" : "Fail";
+
+        papers[1].paperName = paper2;
+        papers[1].score = score2;
+        papers[1].grade = (score2 >= PASS_MARK) ? "Pass" : "Fail";
+
+        papers[2].paperName = paper3;
+        papers[2].score = score3;
+        papers[2].grade = (score3 >= PASS_MARK) ? "Pass" : "Fail";
+    }
+
+    // Method to calculate overall grade
+    string calculateOverallGrade() const {
+        for (int i = 0; i < 3; ++i) {
+            if (papers[i].grade == "Fail") {
+                return "Fail";
+            }
+        }
+        return "Pass";
+    }
+
+    // Method to display grade sheet
+    void displayGradeSheet() const {
+        cout << getFullName() << "'s Mark Sheet" << endl;
+        displayPersonalDetails();
+        cout << "Paper\tScore\tGrade" << endl;
+        cout << "***************************************" << endl;
+        for (int i = 0; i < 3; ++i) {
+            cout << papers[i].paperName << "\t" << papers[i].score << "\t" << papers[i].grade << endl;
+        }
+        cout << "Overall grade: " << calculateOverallGrade() << endl;
+    }
+};
+
+int main() {
+    int rollNo;
+    string fullName, course, college;
+    string paper1, paper2, paper3;
+    int score1, score2, score3;
+
+    // Input student personal details
+    cout << "Enter Student Roll No: ";
+    cin >> rollNo;
+    cin.ignore(); // Ignore newline in buffer
+    cout << "Enter Student Full Name: ";
+    getline(cin, fullName);
+    cout << "Enter Course: ";
+    getline(cin, course);
+    cout << "Enter College: ";
+    getline(cin, college);
+
+    // Input grades for three papers
+    cout << "Enter Paper 1 Name: ";
+    getline(cin, paper1);
+    cout << "Enter Score for Paper 1: ";
+    cin >> score1;
+
+    cout << "Enter Paper 2 Name: ";
+    cin.ignore(); // Ignore newline in buffer
+    getline(cin, paper2);
+    cout << "Enter Score for Paper 2: ";
+    cin >> score2;
+
+    cout << "Enter Paper 3 Name: ";
+    cin.ignore(); // Ignore newline in buffer
+    getline(cin, paper3);
+    cout << "Enter Score for Paper 3: ";
+    cin >> score3;
+
+    // Create GradeCalculation object and display mark sheet
+    GradeCalculation markSheet(rollNo, fullName, course, college, paper1, score1, paper2, score2, paper3, score3);
+    markSheet.displayGradeSheet();
+
+    return 0;
+}

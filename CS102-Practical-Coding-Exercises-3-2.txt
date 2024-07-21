@@ -1,0 +1,24 @@
+#include <iostream>
+#include <sstream> // For stringstream
+#include <iomanip> // For setw()
+
+using namespace std;
+
+int main() {
+    stringstream output; // String stream to accumulate output
+
+    // Loop to generate multiplication tables from 1 to 10 in a horizontal format
+    for (int i = 1; i <= 10; ++i) {
+		
+        // Print the multiplication table for the current number
+        for (int j = 1; j <= 10; ++j) {
+            output << setw(4) << i * j; // setw() to align numbers properly
+        }
+        output << " \n "; // Separate each table to a new line
+    }
+
+    // Output the accumulated string
+    cout << output.str() << endl;
+
+    return 0;
+}

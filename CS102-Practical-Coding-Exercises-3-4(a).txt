@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+int main() {
+int n=3;
+//Print the patteren loop
+for (int k=0; k <=n; ++k) {
+    //Print K stars in the current now
+    for(int p=0; p<=k; ++p){
+        cout<<" *";
+    }
+cout <<endl;// // Move to the next line after each row
+}
+return 0;
+}

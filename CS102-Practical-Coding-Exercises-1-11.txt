@@ -1,0 +1,49 @@
+#include <iostream>
+#include <string>
+#include <cctype> // For isalpha() function
+
+using namespace std;
+
+bool isValidName(const string& name) {
+    for (char c : name) {
+        if (!isalpha(c)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int main() {
+    string firstName, lastName;
+
+    // Input first name
+    cout << "Enter first name: ";
+    getline(cin, firstName);
+
+    // Input last name
+    cout << "Enter last name: ";
+    getline(cin, lastName);
+
+    // Validate first name and last name are different
+    if (firstName == lastName) {
+        cout << "Please provide different last name" << endl;
+        return 0;
+    }
+
+    // Validate first name contains only alphabets
+    if (!isValidName(firstName)) {
+        cout << "Please provide only letters for first name" << endl;
+        return 0;
+    }
+
+    // Validate last name contains only alphabets
+    if (!isValidName(lastName)) {
+        cout << "Please provide only letters for last name" << endl;
+        return 0;
+    }
+
+    // Output the greeting
+    cout << "Hi " << firstName << " " << lastName << endl;
+
+    return 0;
+}
